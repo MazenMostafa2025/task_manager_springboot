@@ -8,21 +8,16 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
 @Service
 @Transactional
 public class TagService {
 
     private final TagRepository tagRepository;
-    private final TaskRepository taskRepository;
 
-    public TagService(TagRepository tagRepository, TaskRepository taskRepository) {
+    public TagService(TagRepository tagRepository) {
         this.tagRepository = tagRepository;
-        this.taskRepository = taskRepository;
     }
 
     public Tag createTag(Tag tag) {
