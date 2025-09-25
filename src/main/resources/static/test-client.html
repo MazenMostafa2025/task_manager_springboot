@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+</head>
+<body>
+<h1>WebSocket Notifications</h1>
+<button onclick="connect()">Connect</button>
+<button onclick="disconnect()">Disconnect</button>
+<ul id="messages"></ul>
+
+<script>
+    let stompClient = null;
+
+    function connect() {
+        const token = localStorage.getItem("jwt"); // raw JWT token
+        console.log(token);
+        const socket = new SockJS("/ws?token=Bearer " + token);
+        stompClient = Stomp.over(socket);
+        stompClient.connect(
+            // { Authorization: "Bearer " + token }, // headers
+            {},
+            (frame) => {
+                console.log("Connected: " + frame);
+
+                // Subscribe to user's private queue
+                stompClient.subscribe("/user/queue/notifications", (msg) => {
+                // stompClient.subscribe("/topic/test", (msg) => {
+                    const data = JSON.parse(msg.body);
+                    showMessage(data.message);
+                    console.log(data.message);
+                });
+            },
+            (error) => {
+                console.log("STOMP error:", error);
+            }
+        );
+    }
+
+    function disconnect() {
+        if (stompClient !== null) {
+            stompClient.disconnect();
+            console.log("Disconnected");
+        }
+    }
+
+    function showMessage(message) {
+        const ul = document.getElementById("messages");
+        const li = document.createElement("li");
+        li.appendChild(document.createTextNode(message));
+        ul.appendChild(li);
+    }
+</script>
+</body>
+</html>
