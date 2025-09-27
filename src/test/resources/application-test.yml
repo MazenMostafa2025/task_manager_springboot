@@ -41,3 +41,10 @@ security:
   jwt:
     secret: dGVzdC1zZWNyZXQta2V5LXRlc3Qtc2VjcmV0LWtleQ==
     expiration: 86400000 # 24 hours in milliseconds
+
+gemini:
+  api:
+    key: dummykey
+  project-id: dummyprojid
+  location: dummylocation
+  model: dummygeminimodel
