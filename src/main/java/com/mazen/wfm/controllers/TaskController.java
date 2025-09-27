@@ -38,13 +38,15 @@ public class TaskController {
 
     private final TaskService taskService;
     private final TaskMapper taskMapper;
-    private final GeminiService geminiService;
+//    private final GeminiService geminiService;
     private final UserService userService;
 
-    public TaskController(TaskService taskService, TaskMapper taskMapper, GeminiService geminiService, UserService userService) {
+    public TaskController(TaskService taskService, TaskMapper taskMapper,
+//                          GeminiService geminiService,
+                          UserService userService) {
         this.taskService = taskService;
         this.taskMapper = taskMapper;
-        this.geminiService = geminiService;
+//        this.geminiService = geminiService;
         this.userService = userService;
     }
 
@@ -123,24 +125,24 @@ public class TaskController {
         return ResponseEntity.ok(ResponseWrapper.success(taskMapper.toResponse(task)));
     }
 
-    @Operation(summary = "get advice of current tasks from gemini api")
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Tasks Advice received",
-                    content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = ResponseWrapper.class))),
-    })
-    @PostMapping("/tasks-advice")
-    public ResponseEntity<ResponseWrapper<String>> getTasksAdvice (Authentication authentication) {
-        String username = authentication.getName();
-        AppUser user = userService.findByUsername(username);
-        List<Status> statuses = List.of(Status.TODO, Status.IN_PROGRESS);
-        List<TaskResponse> tasksResponses = taskService.getTasksByUserAndStatus(user.getUserId(), statuses).stream().map(taskMapper::toResponse).toList();
-        List<TaskAdviceRequest> tasks = taskMapper.toTaskAdviceRequestList(tasksResponses);
-        if (tasks.isEmpty())
-            throw new ResourceNotFoundException("No tasks found");
-        String message = geminiService.manageTasks(tasks);
-        return ok(ResponseWrapper.success(message));
-    }
+//    @Operation(summary = "get advice of current tasks from gemini api")
+//    @ApiResponses({
+//            @ApiResponse(responseCode = "200", description = "Tasks Advice received",
+//                    content = @Content(mediaType = "application/json",
+//                            schema = @Schema(implementation = ResponseWrapper.class))),
+//    })
+//    @PostMapping("/tasks-advice")
+//    public ResponseEntity<ResponseWrapper<String>> getTasksAdvice (Authentication authentication) {
+//        String username = authentication.getName();
+//        AppUser user = userService.findByUsername(username);
+//        List<Status> statuses = List.of(Status.TODO, Status.IN_PROGRESS);
+//        List<TaskResponse> tasksResponses = taskService.getTasksByUserAndStatus(user.getUserId(), statuses).stream().map(taskMapper::toResponse).toList();
+//        List<TaskAdviceRequest> tasks = taskMapper.toTaskAdviceRequestList(tasksResponses);
+//        if (tasks.isEmpty())
+//            throw new ResourceNotFoundException("No tasks found");
+//        String message = geminiService.manageTasks(tasks);
+//        return ok(ResponseWrapper.success(message));
+//    }
 
     @Operation(summary = "Assign User to a task")
     @ApiResponses({
