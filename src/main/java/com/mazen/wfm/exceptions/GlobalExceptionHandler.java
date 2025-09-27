@@ -2,6 +2,7 @@ package com.mazen.wfm.exceptions;
 
 import com.mazen.wfm.dtos.response.ResponseWrapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -69,6 +70,18 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ResponseWrapper<Object>> handleResponseStatusException(ResponseStatusException ex) {
         return ResponseEntity.status(ex.getStatusCode())
                 .body(ResponseWrapper.error(ex.getReason()));
+    }
+
+    @ExceptionHandler(DuplicateResourceException.class)
+    public ResponseEntity<?> handleDuplicate(DuplicateResourceException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(ResponseWrapper.error(ex.getMessage()));
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<?> handleDataIntegrity(DataIntegrityViolationException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(ResponseWrapper.error("Duplicate entry or constraint violation"));
     }
 
     @ExceptionHandler(Exception.class)

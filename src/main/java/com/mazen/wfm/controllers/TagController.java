@@ -1,14 +1,12 @@
 package com.mazen.wfm.controllers;
 
 import com.mazen.wfm.dtos.response.ResponseWrapper;
-import com.mazen.wfm.exceptions.ResourceNotFoundException;
 import com.mazen.wfm.models.Tag;
 import com.mazen.wfm.services.TagService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
 
 @io.swagger.v3.oas.annotations.tags.Tag(name = "Tags", description = "API for Tags CRUD Operations")
 @RestController
@@ -48,7 +46,8 @@ public class TagController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTag(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTag(@PathVariable Long id) {
         tagService.deleteTag(id);
+        return ResponseEntity.noContent().build();
     }
 }

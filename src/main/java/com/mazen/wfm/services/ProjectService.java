@@ -10,12 +10,10 @@ import com.mazen.wfm.models.Project;
 import com.mazen.wfm.models.UserRole;
 import com.mazen.wfm.repositories.AppUserRepository;
 import com.mazen.wfm.repositories.ProjectRepository;
-import com.mazen.wfm.repositories.TaskRepository;
 import org.springframework.security.authorization.AuthorizationDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional

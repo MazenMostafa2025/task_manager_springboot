@@ -1,10 +1,11 @@
 package com.mazen.wfm.services;
 
+import com.mazen.wfm.exceptions.DuplicateResourceException;
 import com.mazen.wfm.exceptions.ResourceNotFoundException;
 import com.mazen.wfm.models.Tag;
 import com.mazen.wfm.repositories.TagRepository;
-import com.mazen.wfm.repositories.TaskRepository;
-import jakarta.annotation.Resource;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +22,11 @@ public class TagService {
     }
 
     public Tag createTag(Tag tag) {
-        return tagRepository.save(tag);
+        try {
+         return tagRepository.save(tag);
+        } catch (DataIntegrityViolationException e) {
+            throw new DuplicateResourceException("Tag with name "+ tag.getName() + " already exists");
+        }
     }
 
     public Tag getTagById(Long tagId) {
@@ -41,7 +46,11 @@ public class TagService {
     }
 
     public void deleteTag(Long tagId) {
-        tagRepository.deleteById(tagId);
+        try {
+            tagRepository.deleteById(tagId);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException("Tag not found");
+        }
     }
 
 }

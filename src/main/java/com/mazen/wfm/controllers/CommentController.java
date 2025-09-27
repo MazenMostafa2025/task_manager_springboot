@@ -1,6 +1,5 @@
 package com.mazen.wfm.controllers;
 
-import com.mazen.wfm.dtos.CommentDTO;
 import com.mazen.wfm.dtos.request.CreateCommentRequest;
 import com.mazen.wfm.dtos.response.CommentResponse;
 import com.mazen.wfm.dtos.response.ResponseWrapper;
@@ -9,7 +8,6 @@ import com.mazen.wfm.mapper.CommentMapper;
 import com.mazen.wfm.models.Comment;
 import com.mazen.wfm.services.CommentService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

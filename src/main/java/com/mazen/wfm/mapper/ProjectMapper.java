@@ -1,6 +1,5 @@
 package com.mazen.wfm.mapper;
 
-import com.mazen.wfm.dtos.ProjectDTO;
 import com.mazen.wfm.dtos.request.CreateProjectRequest;
 import com.mazen.wfm.dtos.request.UpdateProjectRequest;
 import com.mazen.wfm.dtos.response.ProjectResponse;
@@ -10,7 +9,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-import java.util.stream.Collectors;
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface ProjectMapper {
 //    @Mapping(target = "ownerId", source = "owner.userId")

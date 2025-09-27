@@ -1,6 +1,5 @@
 package com.mazen.wfm.dtos.response;
 
-import com.mazen.wfm.dtos.ProjectDTO;
 import com.mazen.wfm.dtos.TagDTO;
 import com.mazen.wfm.dtos.TaskSummaryDTO;
 import com.mazen.wfm.models.Priority;
