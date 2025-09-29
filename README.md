@@ -6,3 +6,4 @@ real-time notifications using spring Websocket and RabbitMQ for background tasks
 **• Integrated Spring Actuator, Prometheus and Grafana for application monitoring.** 
 ---
 **• Implemented Unit, Integration tests with containerizing using docker, automating using CI pipeline with Github Actions.**
+---
