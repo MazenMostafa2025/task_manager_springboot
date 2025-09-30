@@ -8,8 +8,8 @@ spring:
         format_sql: true
 
 jwt:
-  secret-key: dGVzdC1zZWNyZXQta2V5LXRlc3Qtc2VjcmV0LWtleQ==
-  expiration: 86400000 # 24 hours in milliseconds
+  secret-key: thesecretkey==
+  expiration: 86400000
 
 logging:
   level:
@@ -39,8 +39,8 @@ flyway:
 # Disable security for tests
 security:
   jwt:
-    secret: dGVzdC1zZWNyZXQta2V5LXRlc3Qtc2VjcmV0LWtleQ==
-    expiration: 86400000 # 24 hours in milliseconds
+    secret: thesecretkey==
+    expiration: 86400000
 
 gemini:
   api:
