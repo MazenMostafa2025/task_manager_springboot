@@ -6,152 +6,135 @@ The system also integrates with RabbitMQ, Prometheus, and Grafana for asynchrono
 
 **⚙️ Architecture**
 
-Modular, layered Spring Boot structure
+• Modular, layered Spring Boot structure
 
-RESTful API backend
+• RESTful API backend
 
-Token-based authentication
+• Token-based authentication
 
-Dockerized monitoring and messaging services
+• Dockerized monitoring and messaging services
 
 Main Layers:
 
-Controller: Handles REST API requests
+• Controller: Handles REST API requests
 
-Service: Contains business logic
+• Service: Contains business logic
 
-Repository: Handles database operations
+• Repository: Handles database operations
 
-Entity & DTO: Data modeling and transfer
+• Entity & DTO: Data modeling and transfer
 
 **✨ Key Features**
 **🔐 Authentication & Security**
 
-User registration and login with encrypted passwords
+• User registration and login with encrypted passwords
 
-JWT-based authentication (access and refresh tokens)
+• JWT-based authentication (access and refresh tokens)
 
-Role-based access control (Admin, Team Leader, Member)
+• Role-based access control (Admin, Team Leader, Member)
 
-Token refresh functionality
+• Token refresh functionality
 
 **🧑‍🤝‍🧑 User Management**
 
-Create and manage user accounts
+• Create and manage user accounts
 
-Check for existing usernames or emails
+• Check for existing usernames or emails
 
-Enable/disable user accounts
+• Enable/disable user accounts
 
-Load user details for authentication
+• Load user details for authentication
 
 **🗂️ Project Management**
 
-Create, update, and delete projects
+• Create, update, and delete projects
 
-Assign projects to owners
+• Assign projects to owners
 
-Search and list projects by name
+• Search and list projects by name
 
-Enforce ownership and admin permissions
+• Enforce ownership and admin permissions
 
 **✅ Task Management**
 
-Create and update tasks within projects
+• Create and update tasks within projects
 
-Assign users and tags to tasks
+• Assign users and tags to tasks
 
-Track task status and due dates
+• Track task status and due dates
 
-Filter tasks by user, project, or status
+• Filter tasks by user, project, or status
 
-Automatically detect overdue tasks
+• Automatically detect overdue tasks
 
-Send task reminders and notifications
+• Send task reminders and notifications
 
 **💬 Comments**
 
-Add and view comments on tasks
+• Add and view comments on tasks
 
-Delete comments (only by author or admin)
+• Delete comments (only by author or admin)
 
-View all comments for a specific task
+• View all comments for a specific task
 
 **🏷️ Tags**
 
-Create, update, and delete tags
+• Create, update, and delete tags
 
-Prevent duplicate tag creation
+• Prevent duplicate tag creation
 
-Assign multiple tags to tasks
+• Assign multiple tags to tasks
 
 **📬 Email Notifications**
 
-Send email alerts for new task assignments
+• Send email alerts for new task assignments
 
-Simple text-based email delivery
+• Simple text-based email delivery
 
-Integration with RabbitMQ for async processing
+• Integration with RabbitMQ for async processing
 
 **🤖 AI Task Advisor (Gemini Integration)**
 
-Uses Google Vertex AI – Gemini 1.5 model
+• Uses Google Vertex AI – Gemini 1.5 model
 
-Analyzes project tasks and suggests execution order
+• Analyzes project tasks and suggests execution order
 
-Detects dependencies and bottlenecks
+• Detects dependencies and bottlenecks
 
-Generates concise recommendations for project managers
+• Generates concise recommendations for project managers
 
 **🐇 RabbitMQ Integration**
 
-Asynchronous messaging system for task events
+• Asynchronous messaging system for task events
 
-Supports scalable notification and real-time updates
+• Supports scalable notification and real-time updates
 
-Optional integration with email and WebSocket systems
+• Optional integration with email and WebSocket systems
 
 **📊 Monitoring & Metrics**
 
-Integrated Prometheus for metrics collection
+• Integrated Prometheus for metrics collection
 
-Grafana dashboards for visualization
+• Grafana dashboards for visualization
 
-Metrics exposed through Spring Boot Actuator (/actuator/prometheus)
+• Metrics exposed through Spring Boot Actuator (/actuator/prometheus)
 
 **🧪 Testing & Quality**
 
-Unit tests for core service and utility layers
+• Unit tests for core service and utility layers
 
-Integration tests covering REST endpoints and database logic
+• Integration tests covering REST endpoints and database logic
 
-Automated testing and build verification via GitHub Actions CI
+• Automated testing and build verification via GitHub Actions CI
 
 **🧱 Tech Stack**
 **Category	Technology**
-Backend Framework	Spring Boot
-Database	Spring Data JPA
-Security	Spring Security + JWT
-AI Integration	Google Vertex AI (Gemini)
-Messaging	RabbitMQ
-Email	JavaMailSender
-Monitoring	Prometheus + Grafana
-Build Tool	Maven
-Deployment	Docker & Docker Compose
-**🚀 How to Run**
-
-Start infrastructure:
-
-docker-compose up -d
-
-
-Run the Spring Boot app:
-
-mvn spring-boot:run
-
-Access the services:
-
-API: http://localhost:8080
-RabbitMQ UI: http://localhost:15672
-Prometheus: http://localhost:9090
-Grafana: http://localhost:3000
+• Backend Framework	Spring Boot
+• Database	Spring Data JPA
+• Security	Spring Security + JWT
+• AI Integration	Google Vertex AI (Gemini)
+• Messaging	RabbitMQ
+• Email	JavaMailSender
+• Monitoring	Prometheus + Grafana
+• Build Tool	Maven
+• Deployment	Docker & Docker Compose
